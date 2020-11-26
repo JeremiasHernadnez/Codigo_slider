@@ -110,6 +110,100 @@ void homeaxis_func() {
 
     
   }
+  
+  
+  
+  #include <LiquidCrystal.h>
+
+LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
+
+int pantalla = 1;
+int modo_configuracion = 1;
+
+//Variables de lectura de los perifericos de entrada
+int readgrados;
+int readtiempo;
+int gradostilt;
+int tiempotilt;
+int gradospan;
+int tiempopan;
+int distlong;
+int tiempolong;
+
+//Variables de target de los pasos
+int pasos_tilt_set;
+int pasos_long_set;
+int pasos_pan_set;
+
+//Variables que condicionan la velocidad del motor
+int retardo_long_set;
+int retardo_pan_set;
+int retardo_tilt_set;
+//funciones para calcular los pasos
+int cantidad_pasos_tilt(int  grados_tilt);
+int cantidad_pasos_pan(int grados_pan);
+int cantidad_pasos_long(int dist_long);
+
+
+void setup() {
+  // put your setup code here, to run once:
+
+  pinMode(6, INPUT);
+  pinMode(7, INPUT);
+  pinMode(32, INPUT); //Switch final de carrera long
+  pinMode(33, INPUT); //Switch final de carrera pan
+  pinMode(34, INPUT); //Switch final de carrera tilt
+
+
+  lcd.begin(16, 2);
+  lcd.setCursor(3, 0);
+  lcd.print("Bienvenidos");
+  delay(1000);
+  lcd.clear();
+  pantalla = 1;
+
+
+}
+
+void loop() {
+
+
+  //boton avance
+  if (digitalRead(7) == 1) {
+    pantalla++;
+  }
+  //boton retroceso
+  if (digitalRead(6) == 1) {
+    if (pantalla > 1) {
+      pantalla--;
+    }
+
+  }
+
+  if (pantalla == 1) {
+    void pantalla_uno();
+  }
+  if (pantalla == 2) {
+    void pantalla_dos();
+  }
+  if (pantalla == 3) {
+    void pantalla_tres();
+  }
+
+  if (pantalla == 4) {
+    void pantalla_cuatro();
+
+  }
+  if (pantalla == 5) {
+    void homeaxis_func();
+    long_move(retardo_long_set, pasos_long_set, false);
+    pan_move(retardo_pan_set, pasos_pan_set, false);
+    tilt_move(retardo_tilt_set, pasos_tilt_set, false);
+    pantalla=1;
+  }
+}
+
+
 
 
 

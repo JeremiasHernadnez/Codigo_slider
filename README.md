@@ -66,3 +66,43 @@ void pantalla_tres() {
   lcd.print(tiempolong);
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+int long_move(int retardo_long, int pasos_long, bool direct_long) {
+  //libreria a4988
+}
+
+int pan_move(int retardo_pan, int pasos_pan, bool direct_pan) {
+  //libreria a4988
+}
+
+
+
+int tilt_move(int retardo_tilt, int pasos_tilt, bool direct_tilt) {
+  //libreria a4988
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

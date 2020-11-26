@@ -97,6 +97,23 @@ int tilt_move(int retardo_tilt, int pasos_tilt, bool direct_tilt) {
 
 
 
+void homeaxis_func() {
+      while (digitalRead(32) == 0) {
+        long_move(5,1,true);
+      }
+      while (digitalRead(33) == 0) {
+        pan_move(5,1,true);
+      }
+      while (digitalRead(34) == 0) {
+        tilt_move(5,1,true);
+      }
+
+    
+  }
+
+
+
+
 
 
 

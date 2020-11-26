@@ -66,3 +66,13 @@ void pantalla_tres() {
   lcd.print(tiempolong);
 
 }
+
+void pantalla_cuatro() {
+  lcd.setCursor(5, 0);
+  lcd.print("CONFIRM");
+  lcd.setCursor(0, 1);
+  lcd.print("YES");
+  lcd.setCursor(14, 1);
+  lcd.print("NO");
+
+}
